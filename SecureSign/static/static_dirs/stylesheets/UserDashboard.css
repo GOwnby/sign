@@ -1,0 +1,86 @@
+#DashboardPanel {
+    float: left;
+    width: 33%;
+    height: max-content;
+    background-color: lightgrey;
+}
+#Logo {
+    float: top;
+    width: max-content;
+    height: 33%
+}
+#Dashboard {
+    float: top;
+    width: max-content;
+    height: 10%;
+}
+#Templates {
+    float: top;
+    width: max-content;
+    height: 10%;
+}
+#Sent {
+    float: top;
+    width: max-content;
+    height: 10%;
+}
+#Drafts {
+    float: top;
+    width: max-content;
+    height: 10%;
+}
+#Received {
+    float: top;
+    width: max-content;
+    height: 10%;
+}
+#Completed {
+    float: top;
+    width: max-content;
+    height: 10%;
+}
+
+
+#View {
+    float: right;
+    width: 67%;
+    height: max-content;
+}
+#DocumentsSent {
+    float: top;
+    margin-left: 10%;
+    margin-top: 10%;
+}
+#DocumentsReceived {
+    float: top;
+    margin-left: 10%;
+}
+#ActiveSent{
+    float: top;
+    margin-left: 10%;
+}
+#ActiveReceived {
+    float: top;
+    margin-left: 10%;
+}
+#AddDocument {
+    float: top;
+    margin-left: 10%;
+}
+
+#addDocumentSettings {
+    float: top;
+    display: none;
+}
+#selectImportDocument {
+    float: left;
+    margin-left: 15%;
+}
+#selectExistingTemplate {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+#selectNewTemplate {
+    float: right;
+    margin-right: 15%
+}

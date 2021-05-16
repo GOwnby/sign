@@ -1,0 +1,52 @@
+<html>
+
+    <head>
+        {% load staticfiles %}
+        <link rel="stylesheet" type="text/css" href="{% static "stylesheets/UserDashboard.css" %}" />
+        <script src="{% static "js/UserDashboard.js" %}"></script>   
+
+    </head>
+
+    <body>
+
+        <div id="DashboardPanel">
+
+            <a href="/"><div id="Logo"></div></a>
+            <a href="/UserDashboard/"><div id="Dashboard"></div></a>
+            <a href="/UserDashboard/Templates/"><div id="Templates"></div></a>
+            <a href="/UserDashboard/Sent/"><div id="Sent"></div></a>
+            <a href="/UserDashboard/Received/"><div id="Received"></div></a>
+            <a href="/UserDashboard/Drafts/"><div id="Drafts"></div></a>
+            <a href="/UserDashboard/Completed/"><div id="Completed"></div></a>
+
+        </div>
+
+        <div id="View">
+
+            <div id="DocumentsSent">Documents Sent {{ documentsSent }}</div>
+            <div id="DocumentsReceived">Documents Received {{ documentsReceived }}</div>
+            <div id="ActiveSent">Active Documents Sent {{ activeSent }}</div>
+            <div id="ActiveReceived">Ready To Sign {{ activeReceived }}</div>
+            <div id="AddDocument">Add Document</div>
+        
+
+            <div id="addDocumentSettings">
+
+                <img id="selectImportDocument">
+                <img id="selectFullTemplate">
+                <img id="selectBoxedTemplate">
+
+                <div id="uploadFileDiv">
+                    <form action="/ManageDocument/upload" method="post">
+                        {% csrf_token %}
+                        {{ form }}
+                        <input type="submit" value="CreateDocument">
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+
+    </body>
+</html>

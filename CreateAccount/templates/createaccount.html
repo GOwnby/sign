@@ -1,0 +1,20 @@
+<head>
+    {% load static %}
+    <link rel="stylesheet" src="{% static "js/CreateAccountForm.js" %}" />
+</head>
+
+<body>
+
+<form id="form" action="/createaccount/" method="post">
+    <div id="formBox">
+        {% csrf_token %}
+        {{ form }}
+    </div>
+    <button id="addOrg">Create Organization</button>
+    <div id="MaxOrganizations" style="display: none;"><h5>Please visit the User Dashboard to Create Additional Organizations</h5></div>
+    <input type="submit" value="Create Account">
+</form>
+
+
+
+</body>

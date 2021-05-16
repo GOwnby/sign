@@ -1,0 +1,60 @@
+<html>
+
+    <head>
+        {% load staticfiles %}
+        <link rel="stylesheet" type="text/css" href="{% static "stylesheets/Completed.css" %}" />
+        <script src="{% static "js/Completed.js" %}"></script>
+    </head>
+
+    <body>
+
+        <div id="DashboardPanel">
+
+            <a href="/"><div id="Logo"></div></a>
+            <a href="/UserDashboard/"><div id="Dashboard"></div></a>
+            <a href="/UserDashboard/Templates/"><div id="Templates"></div></a>
+            <a href="/UserDashboard/Sent/"><div id="Sent"></div></a>
+            <a href="/UserDashboard/Received/"><div id="Received"></div></a>
+            <a href="/UserDashboard/Drafts/"><div id="Drafts"></div></a>
+            <a href="/UserDashboard/Completed/"><div id="Completed"></div></a>
+
+        </div>
+
+        <div id="View">
+
+            <div id="DocumentView">
+            {% for document in documents %}
+                <div class="Document">
+                    <a href="/ManageDocument/{{ document.requestID }}"><div class="Title"><h3 class="TitleText">{{ document.title }}</h3></div></a>
+                    <div class="RecentDate"><h4 class="DateText">{{ document.dateMovedView }}</h4></div>
+                </div>
+            {% endfor %}
+            </div>
+
+            <div id="PageView">
+
+                <div id="FirstPage">
+                    {% if firstpage != "" %}
+                        <a href="/UserDashboard/Completed/{{ firstpage }}"><p>First Page</p></a>
+                    {% endif %}
+                </div>
+
+                <div id="Pages">
+                    {% for each in page %}
+                        <a href="/UserDashboard/Completed/{{ each }}"><p>{{ each }}</p></a>
+                    {% endfor %}
+                </div>
+
+                <div id="LastPage">
+                    {% if lastpage != "" %}
+                        <a href="/UserDashboard/Completed/{{ lastpage }}"><p>Last Page</p></a>
+                    {% endif %}
+                </div>
+
+            </div>
+
+        </div>
+
+    </body>
+
+</html>

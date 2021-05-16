@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+<!--
+	Telephasic by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+        {% load staticfiles %}
+        <link rel="stylesheet" type="text/css" href="{% static "stylesheets/UserDashboard.css" %}" />
+		<title>Iris Documents</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static "stylesheets/main.css" %}" />
+	</head>
+	<body class="no-sidebar is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header-wrapper">
+					<div id="header" class="container">
+
+						<!-- Logo -->
+							<h1 id="logo"><a href="/Login/">Login</a></h1>
+
+						<!-- Nav -->
+							<nav id="nav">
+								<ul>
+									<li>
+										<a href="#">Help</a>
+										<ul>
+											<li><a href="#">FAQ</a></li>
+											<li><a href="#">Contact</a></li>
+											<li>
+												<a href="#">Prices</a>
+												<ul>
+													<li><a href="#">Free User Benefits</a></li>
+													<li><a href="#">Pro User Plans</a></li>
+													<li><a href="#">Company Plans</a></li>
+												</ul>
+											</li>
+										</ul>
+									</li>
+									<li><a href="/CreateAccount/">Create Account</a></li>
+									<li class="break"><a href="/UserDashboard/">UserDashboard</a></li>
+									<li><a href="/CompanyDashboard">Company Dashboard</a></li>
+								</ul>
+							</nav>
+
+					</div>
+				</div>
+
+			<!-- Main -->
+				<div class="wrapper">
+					<div class="container" id="main">
+
+						<!-- Content -->
+							<article id="content">
+								<header>
+									<h2>Iris Documents</h2>
+									<p>Iris1</p>
+								</header>
+								<a href="#" class="image featured"><img src="images/pic06.jpg" alt="" /></a>
+								<p>iris2</p>
+								<p>iris3</p>
+								<p>iris4</p>
+							</article>
+
+						<div class="row features">
+							<section class="col-4 col-12-narrower feature">
+								<div class="image-wrapper first">
+									<a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
+								</div>
+								<header>
+									<h3>Sign</h3>
+								</header>
+								<p>Sign Documents</p>
+								<ul class="actions">
+									<li><a href="#" class="button">Learn More</a></li>
+								</ul>
+							</section>
+							<section class="col-4 col-12-narrower feature">
+								<div class="image-wrapper">
+									<a href="#" class="image featured"><img src="images/pic04.jpg" alt="" /></a>
+								</div>
+								<header>
+									<h3>Create</h3>
+								</header>
+								<p>Create Custom Templates</p>
+								<ul class="actions">
+									<li><a href="#" class="button">Learn More</a></li>
+								</ul>
+							</section>
+							<section class="col-4 col-12-narrower feature">
+								<div class="image-wrapper">
+									<a href="#" class="image featured"><img src="images/pic05.jpg" alt="" /></a>
+								</div>
+								<header>
+									<h3>Aggregate</h3>
+								</header>
+								<p>Create Documents Directly From Custom Forms</p>
+								<ul class="actions">
+									<li><a href="#" class="button">Learn More</a></li>
+								</ul>
+							</section>
+						</div>
+					</div>
+				</div>
+
+        <!-- Scripts --> 
+			<script src="{% static "js/jquery.min.js" %}"></script>
+			<script src="{% static "js/jquery.dropotron.min.js" %}"></script>
+			<script src="{% static "js/browser.min.js" %}"></script>
+			<script src="{% static "js/breakpoints.min.js" %}"></script>
+			<script src="{% static "js/util.js" %}"></script>
+			<script src="{% static "js/main.js" %}"></script>
+
+	</body>
+</html>
