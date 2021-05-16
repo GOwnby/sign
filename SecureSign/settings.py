@@ -131,15 +131,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = 'SecureSign/staticdeploy/'
 
 # The absolute path to the directory where collectstatic will collect static files for deployment.
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'SecureSign/staticdeploy')
 
 # Location for static files
 STATICFILES_DIRS = [os.path.join(BASE_DIR,'SecureSign/static')]
 
-PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
+#PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
 # Configure SMTP Email Server
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

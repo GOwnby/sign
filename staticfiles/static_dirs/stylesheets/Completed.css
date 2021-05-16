@@ -1,0 +1,84 @@
+#DashboardPanel {
+    float: left;
+    width: 33%;
+    height: max-content;
+    background-color: lightgrey;
+}
+#Logo {
+    float: top;
+    width: max-content;
+    height: 33%
+}
+#Dashboard {
+    float: top;
+    width: max-content;
+    height: 10%;
+}
+#Templates {
+    float: top;
+    width: max-content;
+    height: 10%;
+}
+#Sent {
+    float: top;
+    width: max-content;
+    height: 10%;
+}
+#Drafts {
+    float: top;
+    width: max-content;
+    height: 10%;
+}
+#Received {
+    float: top;
+    width: max-content;
+    height: 10%;
+}
+#Completed {
+    float: top;
+    width: max-content;
+    height: 10%;
+}
+
+
+#View {
+    float: right;
+    width: 67%;
+    height: max-content;
+}
+#DocumentView {
+    float: top;
+    width: max-content;
+    height: 90%;
+}
+#PageView {
+    float: bottom;
+    width: max-content;
+    height: 10%;
+}
+
+.Document {
+    float: top;
+    width: max-content;
+    height: 10%;
+}
+.Title {
+    float: left;
+    margin-left: 10%;
+}
+.RecentDate {
+    float: right;
+    margin-right: 10%;
+}
+
+#FirstPage {
+    float: left;
+    margin-left: 25%;
+}
+#Pages {
+    margin-left: 40%;
+}
+#LastPage {
+    float: right;
+    margin-right: 25%;
+}

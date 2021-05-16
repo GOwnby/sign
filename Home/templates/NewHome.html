@@ -6,12 +6,17 @@
 -->
 <html>
 	<head>
-        {% load staticfiles %}
-        <link rel="stylesheet" type="text/css" href="{% static "stylesheets/UserDashboard.css" %}" />
+        {% load static %}
 		<title>Iris Documents</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="{% static "stylesheets/main.css" %}" />
+		<script src="{% static "js/jquery.min.js" %}"></script>
+		<script src="{% static "js/jquery.dropotron.min.js" %}"></script>
+		<script src="{% static "js/browser.min.js" %}"></script>
+		<script src="{% static "js/breakpoints.min.js" %}"></script>
+		<script src="{% static "js/util.js" %}"></script>
+		<script src="{% static "js/main.js" %}"></script>
 	</head>
 	<body class="no-sidebar is-preload">
 		<div id="page-wrapper">
@@ -60,7 +65,7 @@
 									<h2>Iris Documents</h2>
 									<p>Iris1</p>
 								</header>
-								<a href="#" class="image featured"><img src="images/pic06.jpg" alt="" /></a>
+								<a href="#" class="image featured"><img src="{% static "images/pic06.jpg" %}" alt="" /></a>
 								<p>iris2</p>
 								<p>iris3</p>
 								<p>iris4</p>
@@ -69,7 +74,7 @@
 						<div class="row features">
 							<section class="col-4 col-12-narrower feature">
 								<div class="image-wrapper first">
-									<a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
+									<a href="#" class="image featured"><img src="{% static "images/pic03.jpg" %}" alt="" /></a>
 								</div>
 								<header>
 									<h3>Sign</h3>
@@ -81,7 +86,7 @@
 							</section>
 							<section class="col-4 col-12-narrower feature">
 								<div class="image-wrapper">
-									<a href="#" class="image featured"><img src="images/pic04.jpg" alt="" /></a>
+									<a href="#" class="image featured"><img src="{% static "images/pic04.jpg" %}" alt="" /></a>
 								</div>
 								<header>
 									<h3>Create</h3>
@@ -93,7 +98,7 @@
 							</section>
 							<section class="col-4 col-12-narrower feature">
 								<div class="image-wrapper">
-									<a href="#" class="image featured"><img src="images/pic05.jpg" alt="" /></a>
+									<a href="#" class="image featured"><img src="{% static "images/pic05.jpg" %}" alt="" /></a>
 								</div>
 								<header>
 									<h3>Aggregate</h3>
@@ -106,14 +111,6 @@
 						</div>
 					</div>
 				</div>
-
-        <!-- Scripts --> 
-			<script src="{% static "js/jquery.min.js" %}"></script>
-			<script src="{% static "js/jquery.dropotron.min.js" %}"></script>
-			<script src="{% static "js/browser.min.js" %}"></script>
-			<script src="{% static "js/breakpoints.min.js" %}"></script>
-			<script src="{% static "js/util.js" %}"></script>
-			<script src="{% static "js/main.js" %}"></script>
 
 	</body>
 </html>

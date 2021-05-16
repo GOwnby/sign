@@ -1,5 +1,4 @@
 from django.db import models
-from django_mysql.models import JSONField
 
 class DocumentsSent(models.Model):
     userIDNonce = models.CharField(primary_key=True, max_length=32)
@@ -7,7 +6,7 @@ class DocumentsSent(models.Model):
 
 class NumberOfDocumentsSent(models.Model):
     userID = models.CharField(primary_key=True, max_length=16)
-    documents = models.IntegerField(default=0, max_length=32)
+    documents = models.IntegerField(default=0)
 
 class DocumentDrafts(models.Model):
     userIDNonce = models.CharField(primary_key=True, max_length=32)
@@ -15,7 +14,7 @@ class DocumentDrafts(models.Model):
 
 class NumberOfDocumentDrafts(models.Model):
     userID = models.CharField(primary_key=True, max_length=16)
-    documents = models.IntegerField(default=0, max_length=32)
+    documents = models.IntegerField(default=0)
 
 class DocumentsReceived(models.Model):
     userIDNonce = models.CharField(primary_key=True, max_length=32)
@@ -23,7 +22,7 @@ class DocumentsReceived(models.Model):
 
 class NumberOfDocumentsReceived(models.Model):
     userID = models.CharField(primary_key=True, max_length=16)
-    documents = models.IntegerField(default=0, max_length=32)
+    documents = models.IntegerField(default=0)
 
 class DocumentsCompleted(models.Model):
     userIDNonce = models.CharField(primary_key=True, max_length=32)
@@ -31,11 +30,11 @@ class DocumentsCompleted(models.Model):
 
 class NumberOfDocumentsCompleted(models.Model):
     userID = models.CharField(primary_key=True, max_length=16)
-    documents = models.CharField(default=0, max_length=32)
+    documents = models.IntegerField(default=0)
 
 class DocumentBlock(models.Model):
     userIDNonce = models.CharField(primary_key=True, max_length=32)
-    blockAddress = models.IntegerField(max_length=32)
+    blockAddress = models.IntegerField()
 
 class Document(models.Model):
     requestID = models.CharField(primary_key=True, max_length=32)
@@ -45,22 +44,22 @@ class Document(models.Model):
 
     fingerprintCreated = models.CharField(max_length=32)
     fingerprintCompleted = models.CharField(max_length=32)
-    fingerprintsPerAction = JSONField()
+    fingerprintsPerAction = models.JSONField()
 
     # 0 = Draft 1 = Sent 2 = Completed
-    documentProcess = models.IntegerField(max_length=2)
+    documentProcess = models.IntegerField()
 
     dateCreatedBy = models.CharField(max_length=32)
     dateLastEdited = models.CharField(max_length=32)
 
-    associatedWith = JSONField()
+    associatedWith = models.JSONField()
 
-    timeAddedTo = JSONField()
-    timeViewedBy = JSONField()
-    timeSignedBy = JSONField()
+    timeAddedTo = models.JSONField()
+    timeViewedBy = models.JSONField()
+    timeSignedBy = models.JSONField()
 
-    actionAtIPList = JSONField()
+    actionAtIPList = models.JSONField()
 
 class Documents(models.Model):
     userID = models.CharField(primary_key=True, max_length=16)
-    documents = models.IntegerField(default=0, max_length=32)
+    documents = models.IntegerField(default=0)

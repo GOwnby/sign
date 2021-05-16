@@ -7,8 +7,8 @@ import json
 import uuid
 import datetime
 
-import models
-import forms
+from . import models
+from . import forms
 
 
 def index(request):
@@ -114,7 +114,7 @@ def ManageDocument(request, requestID):
                 print('Could not find Signer')
 
         if associatedUsers['cc1'] == thisUser:
-        readAccess = True
+            readAccess = True
 
         if (associatedUsers['cc1'] != 'NoAdditionalCC'):
             try:
@@ -142,7 +142,7 @@ def CreatedDocument(request, title):
     date = datetime.datetime.today()
     #exampleActionStamp = '2021=12-30:23;59+59[1234567890123456]_0'
     timestampCreated = (date.year + '=' + date.month + '-' + date.day + ':' + date.hour + ';' + date.minute 
-        + '+' + date.second) + '[' + thisUser + ']' + '_0')
+        + '+' + date.second + '[' + thisUser + ']' + '_0')
 
     document = models.Document(requestID = requestID, documentID = documentID, fingerprintCreated = fingerprintCreated,
         createdBy = thisUser, title = title, dateCreatedBy = timestampCreated)
@@ -164,7 +164,7 @@ def userAddedToDocument(request, sentFromUser, user, email, permissions, request
     document.associatedWith[email] = perimssions
     document.save()
 
-    if permissions = 'sign':
+    if permissions == 'sign':
         subject = sentFromUser + 'has requested that you sign a document'
         text_content = user + ',\n\n' + sentFromUser + 'has requested that you sign the following document at IrisDocuments.com'
         html_content = render_to_string('templates/email/emailsigner.html')
