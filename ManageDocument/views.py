@@ -41,8 +41,7 @@ def uploaded(request):
             fingerprintCreated = uuid.uuid4()
             date = datetime.datetime.today()
             #exampleActionStamp = '2021=12-30:23;59+59[1234567890123456]_0'
-            timestampCreated = (date.year + '=' + date.month + '-' + date.day + ':' + date.hour + ';' + date.minute 
-                + '+' + date.second) + '[' + thisUser + ']' + '_0')
+            timestampCreated = date.year + '=' + date.month + '-' + date.day + ':' + date.hour + ';' + date.minute + '+' + date.second + '[' + thisUser + ']' + '_0'
 
             document = models.Document(requestID = requestID, documentID = documentID, fingerprintCreated = fingerprintCreated,
                 createdBy = userID, title = title, dateCreatedBy = timestampCreated)

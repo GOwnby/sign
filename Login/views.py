@@ -2,9 +2,9 @@ from django.shortcuts import render
 
 import datetime
 
-import forms
+from . import forms
+from . import ClientFunctions
 import CreateAccount.models as models
-import ClientFunctions
 
 def login(request):
 

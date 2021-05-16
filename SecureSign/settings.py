@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_mysql',
-    'django-static-jquery',
     'reportlab',
     'Home.apps.HomeConfig',
     'UserDashboard.apps.UserdashboardConfig',

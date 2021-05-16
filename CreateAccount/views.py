@@ -2,8 +2,8 @@ from django.shortcuts import render
 
 import datetime
 
-import forms
-import models as AccountModels
+from . import forms
+from . import models as AccountModels
 import Login.ClientFunctions as ClientFunctions
 from ManageDocument import models as DocumentModels
 
@@ -20,7 +20,7 @@ def CreateAccount(request):
             if not(conf_pass == form_password):
                 return HttpResponse('Passwords do not match')
             accounts = models.Accounts.objects.get(pk=1)
-            accountNumber = accounts.users += 1
+            accountNumber = accounts.users + 1
             accounts.save()
 
             accountNumber = str(accountNumber)
