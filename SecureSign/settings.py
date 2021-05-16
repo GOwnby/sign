@@ -88,7 +88,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'IrisDocuments',
         'USER': 'Iris',
-        'PASSWORD': 'IrisPass',
+        'PASSWORD': '$Iris$1234iris',
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }
