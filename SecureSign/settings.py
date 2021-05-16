@@ -86,9 +86,9 @@ WSGI_APPLICATION = 'SecureSign.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'SecureSign',
-        'USER': 'SecureSign',
-        'PASSWORD': 'Secure@7409',
+        'NAME': 'IrisDocuments',
+        'USER': 'root',
+        'PASSWORD': '',
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }
