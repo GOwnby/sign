@@ -18,6 +18,9 @@ from django.urls import include, path
 from Home import views as HomeView
 from Login import views as LoginView
 from CreateAccount import views as CreateAccountView
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,4 +30,4 @@ urlpatterns = [
     path('ManageDocument/', include('ManageDocument.urls')),
     path('CreateAccount/', CreateAccountView.CreateAccount, name='CreateAccount'),
     path('Login/', LoginView.login, name="Login"),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

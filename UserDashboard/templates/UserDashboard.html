@@ -3,22 +3,21 @@
     <head>
         {% load static %}
         <link rel="stylesheet" type="text/css" href="{% static "stylesheets/UserDashboard.css" %}" />
-        <script src="{% static "js/UserDashboard.js" %}"></script>
-        <script src="{% static "js/jquery.min.js" %}"></script>
-
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>        
+        <script src="{% static "js/UserDashboard.js" %}" type="text/javascript"></script>
     </head>
 
     <body>
 
         <div id="DashboardPanel">
 
-            <a href="/"><div id="Logo"></div></a>
-            <a href="/UserDashboard/"><div id="Dashboard"></div></a>
-            <a href="/UserDashboard/Templates/"><div id="Templates"></div></a>
-            <a href="/UserDashboard/Sent/"><div id="Sent"></div></a>
-            <a href="/UserDashboard/Received/"><div id="Received"></div></a>
-            <a href="/UserDashboard/Drafts/"><div id="Drafts"></div></a>
-            <a href="/UserDashboard/Completed/"><div id="Completed"></div></a>
+            <a href="/"><div id="Logo"></div>Logo</a>
+            <a href="/UserDashboard/"><div id="Dashboard">Dashboard</div></a>
+            <a href="/UserDashboard/Templates/"><div id="Templates">Templates</div></a>
+            <a href="/UserDashboard/Sent/"><div id="Sent">Sent</div></a>
+            <a href="/UserDashboard/Received/"><div id="Received">Received</div></a>
+            <a href="/UserDashboard/Drafts/"><div id="Drafts">Drafts</div></a>
+            <a href="/UserDashboard/Completed/"><div id="Completed">Completed</div></a>
 
         </div>
 
@@ -28,7 +27,7 @@
             <div id="DocumentsReceived">Documents Received {{ documentsReceived }}</div>
             <div id="ActiveSent">Active Documents Sent {{ activeSent }}</div>
             <div id="ActiveReceived">Ready To Sign {{ activeReceived }}</div>
-            <div id="AddDocument">Add Document</div>
+            <button id="AddDocument">Add Document</button>
         
 
             <div id="addDocumentSettings">
@@ -38,7 +37,7 @@
                 <img id="selectBoxedTemplate">
 
                 <div id="uploadFileDiv">
-                    <form action="/ManageDocument/upload" method="post">
+                    <form action="/ManageDocument/Upload/" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
                         {{ form }}
                         <input type="submit" value="CreateDocument">

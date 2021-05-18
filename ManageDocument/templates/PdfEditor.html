@@ -1,0 +1,12 @@
+<html>
+
+    <head>
+        {% load static %}
+        <link rel="stylesheet" href="{% static "stylesheets/PdfEditor.css" %}" />
+    </head>
+
+    <body>
+        <iframe src="/media/documents/{{ requestID }}.pdf" height="100%" width="100%" scrolling="auto"></iframe>
+    </body>
+
+</html>

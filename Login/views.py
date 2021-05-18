@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import HttpResponseRedirect
 
 import datetime
 
@@ -31,7 +32,6 @@ def login(request):
                         userDB.save()
                         response.set_cookie('user', userDB.userID)
                         return response
-        form = forms.LoginForm()
+    form = forms.LoginForm()
     
     return render(request, 'login.html', {'form':form})
-

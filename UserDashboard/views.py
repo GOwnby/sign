@@ -13,19 +13,9 @@ class DocumentObject:
         self.requestID = requestID
 
 def index(request):
-    userID = request.COOKIES.get('user')
-    form = forms.UploadFileForm()
+    form = DocumentForms.UploadFileForm()
 
-    numberOfDocumentsSent = DocumentModels.Documents.objects.get(pk=userID).documents
-
-    accountEmail = AccountModels.AccountLookup.objects.get(pk=userID).email
-    account = AccountModels.Account.objects.get(pk=accountEmail)
-
-    numberOfDocumentsReceived = account.documentsReceived
-    numberOfActiveSent = account.activeSent
-    numberOfActiveReceived = account.activeReceived
-
-    return render(reuest, 'UserDashboard.html', {'form':form, 'documentsSent':numberOfDocumentsSent, 'documentsReceived':numberOfDocumentsReceived, 'activeSent':numberOfActiveSent, 'activeReceived':numberOfActiveReceived})
+    return render(request, 'UserDashboard.html', {'form':form})
 
 def completed(request, page):
     userID = request.COOKIES.get('user')

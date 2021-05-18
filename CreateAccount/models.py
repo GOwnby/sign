@@ -16,12 +16,6 @@ class Account(models.Model):
     signature2 = models.ImageField()
     signature3 = models.ImageField()
 
-    activeSent = models.IntegerField()
-    activeReceived = models.IntegerField()
-
-    receivedDocumentIDs = models.JSONField()
-    documentsReceived = models.IntegerField()
-
 class AccountLookup(models.Model):
     userID = models.CharField(max_length=32, primary_key=True)
     email = models.CharField(max_length=128)

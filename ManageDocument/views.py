@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.core import mail
 from django.template.loader import render_to_string
 from django.http import HttpResponseRedirect
+import os
 
 import json
 import uuid
@@ -29,7 +30,6 @@ def uploaded(request):
 
         if form.is_valid():
             title = form.cleaned_data['title']
-            handle_uploaded(request.FILES['docFile'], requestID)
 
             documents = models.Documents.objects.get(pk=userID)
             documents.documents += 1
@@ -37,27 +37,31 @@ def uploaded(request):
             documentNonce = str(documents.documents)
             requestID = userID + documentNonce
 
+            dirPath = (str(os.path.dirname(os.path.realpath(__file__) ) ) + '/documents/')
+            filename = (dirPath + requestID + '.pdf')
+            #handle_uploaded(request.FILES['docFile'], filename)
+
             documentID = uuid.uuid4()
             fingerprintCreated = uuid.uuid4()
             date = datetime.datetime.today()
             #exampleActionStamp = '2021=12-30:23;59+59[1234567890123456]_0'
-            timestampCreated = date.year + '=' + date.month + '-' + date.day + ':' + date.hour + ';' + date.minute + '+' + date.second + '[' + thisUser + ']' + '_0'
+            timestampCreated = (str(date.year) + '=' + str(date.month) + '-' + str(date.day) + ':' + str(date.hour) +
+                ';' + str(date.minute) + '+' + str(date.second) + '[' + str(userID) + ']' + '_0')
 
-            document = models.Document(requestID = requestID, documentID = documentID, fingerprintCreated = fingerprintCreated,
-                createdBy = userID, title = title, dateCreatedBy = timestampCreated)
+            document = models.Document(requestID = requestID, fingerprintCreated = fingerprintCreated,
+                createdBy = userID, title = title, document = request.FILES['docFile'])
             document.save()
 
             documentDraft = models.DocumentDrafts(userIDNonce=draftRequestID, documentKey=requestID)
             documentDraft.save()
-            return HttpResponseRedirect('/UserDashboard/' + requestID)
+            return HttpResponseRedirect('/ManageDocument/' + requestID)
 
     form = forms.UploadFileForm()
 
     return render(request, 'ManageDocument.html', {'form':form})
 
-
-def handle_uploaded(docFile, requestID):
-    with open('documents/' + requestID + '.pdf', 'wb+') as destination:
+def handle_uploaded(docFile, filename):
+    with open(filename, 'wb') as destination:
         for chunk in docFile.chunks():
             destination.write(chunk)
 
@@ -67,7 +71,7 @@ def ManageDocument(request, requestID):
     if request.method == 'POST':
         form = forms.AccessAccounts(request.POST)
 
-        if form.is_valid:
+        if form.is_valid():
             username = form.cleaned_data['username']
             email = form.cleaned_data['email']
             permissions = form.cleaned_data['permissions']
@@ -127,7 +131,23 @@ def ManageDocument(request, requestID):
             except Exception:
                 print('Could not find CC')
     access = [readAccess, signAccess, writeAccess]
-    return render(request, 'ManageDocument.html', {'username':user,'access':access})
+    return render(request, 'ManageDocument.html', {'username':thisUser, 'access':access, 'requestID':requestID})
+
+def PdfEditor(request, requestID):
+    document = models.Document.objects.get(pk=requestID)
+    thisUser = request.COOKIES.get('user')
+    writeAccess = False
+    signAccess = False
+    readAccess = False
+
+    if (document.createdBy == thisUser):
+        writeAccess = True
+        signAccess = True
+        readAccess = True
+    
+    access = [readAccess, signAccess, writeAccess]
+    return render(request, 'PdfEditor.html', {'username':thisUser, 'access':access, 'requestID':requestID})
+
 
 def CreatedDocument(request, title):
     documents = models.Documents.objects.get(pk=1)

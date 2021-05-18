@@ -113,6 +113,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Set X Frame Options to allow displaying files from this origin
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
@@ -131,15 +133,22 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_URL = 'SecureSign/staticdeploy/'
+STATIC_URL = '/static/'
 
 # The absolute path to the directory where collectstatic will collect static files for deployment.
-STATIC_ROOT = os.path.join(BASE_DIR, 'SecureSign/staticdeploy')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 # Location for static files
-STATICFILES_DIRS = [os.path.join(BASE_DIR,'SecureSign/static')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR,'SecureSign/static/static_dirs/')]
 
 #PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
+
+# Absolute filesystem path to the directory that will hold user-uploaded files.
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# URL that handles the media served from MEDIA_ROOT
+MEDIA_URL = '/media/'
+
 
 # Configure SMTP Email Server
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
