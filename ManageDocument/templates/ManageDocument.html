@@ -2,11 +2,15 @@
 
     <head>
         {% load static %}
+        <script src="{% static "js/ManageDocument.js" %}"></script>
     </head>
 
     <body>
 
-        <a href="/ManageDocument/Editor/{{ requestID }}">Link</a>
+        <a href="/ManageDocument/Editor/{{ requestID }}">Add Signatures to Document</a>
+        
+        <button id="add-user">Add User</button>
+        <div id="users"></div>
         
     </body>
 

@@ -146,7 +146,9 @@ def PdfEditor(request, requestID):
         readAccess = True
     
     access = [readAccess, signAccess, writeAccess]
-    return render(request, 'PdfEditor.html', {'username':thisUser, 'access':access, 'requestID':requestID})
+
+    form = forms.AddUserToFile()
+    return render(request, 'PdfEditor.html', {'username':thisUser, 'access':access, 'requestID':requestID, 'form':form})
 
 
 def CreatedDocument(request, title):

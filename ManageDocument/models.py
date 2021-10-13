@@ -60,27 +60,6 @@ class Document(models.Model):
     fingerprintCreated = models.CharField(max_length=64)
     fingerprintCompleted = models.CharField(max_length=64)
 
-
-
-#    documentID = models.CharField(max_length=32)
-
-#    dateCreatedBy = models.CharField(max_length=32)
-#    dateLastEdited = models.CharField(max_length=32)
-#    fingerprintsPerAction = models.JSONField()
-
-#    0 = Draft 1 = Sent 2 = Completed
-#    documentProcess = models.IntegerField()
-
-
-
-#    associatedWith = models.JSONField()
-
-#    timeAddedTo = models.JSONField()
-#    timeViewedBy = models.JSONField()
-#    timeSignedBy = models.JSONField()
-
-#    actionAtIPList = models.JSONField()
-
 class Documents(models.Model):
     userID = models.CharField(primary_key=True, max_length=16)
     documents = models.IntegerField(default=0)

@@ -1,50 +1,80 @@
-var requestID = document.getElementById("requestID").innerHTML;
-var fileLocation = '/../../media/documents/' + requestID + ".pdf"; 
+$(document).ready(function() {
 
-var loadingTask = pdfjsLib.getDocument(fileLocation);
+document.querySelector("#add-signature").addEventListener('click', function() {
 
+    $("#pdf-main-container")
+    .mouseup(function() {
+        var endX = event.pageX - $(this).offset().left;
+        var endY = event.pageY - $(this).offset().top;
+        
+    })
+    .mousedown(function() {
+        var startX = event.pageX - $(this).offset().left;
+        var startY = event.pageY - $(this).offset().top;
+    });
 
-var currPage = 1; //Pages are 1-based not 0-based
-var numPages = 0;
-var thePDF = null;
+    // Combine userID-startX+startY=endX/endY string format
+    // POST to UserDashboard, use Python view to interpret string and save to mysql database
 
-//This is where you start
-loadingTask.promise.then(function(pdf) {
+const selection = new SelectionArea({
 
-        //Set PDFJS global object (so we can easily access in our page functions
-        thePDF = pdf;
+    // document object - if you want to use it within an embed document (or iframe).
+    document: window.document,
 
-        //How many pages it has
-        numPages = pdf.numPages;
+    // Class for the selection-area element.
+    class: 'selection-area',
 
-        //Start with first page
-        pdf.getPage( 1 ).then( handlePages );
-});
+    // Query selector or dom-node to set up container for the selection-area element.
+    container: 'body',
 
+    // Query selectors for elements which can be selected.
+    selectables: [],
 
+    // Query selectors for elements from where a selection can be started from.
+    startareas: ['html'],
 
-function handlePages(page)
-{
-    //This gives us the page's dimensions at full scale
-    var viewport = page.getViewport( 1 );
+    // Query selectors for elements which will be used as boundaries for the selection.
+    boundaries: ['html'],
 
-    //We'll create a canvas for each page to draw it on
-    var canvas = document.createElement("page");
-    canvas.style.display = "block";
-    var context = canvas.getContext("2d");
-    canvas.height = viewport.height;
-    canvas.width = viewport.width;
+    // px, how many pixels the point should move before starting the selection (combined distance).
+    // Or specifiy the threshold for each axis by passing an object like {x: <number>, y: <number>}.
+    startThreshold: 10,
 
-    //Draw it on the canvas
-    page.render({canvasContext: context, viewport: viewport});
+    // Enable / disable touch support
+    allowTouch: true,
 
-    //Add it to the web page
-    document.getElementById("canvas").appendChild(canvas);
+    // On which point an element should be selected.
+    // Available modes are cover (cover the entire element), center (touch the center) or
+    // the default mode is touch (just touching it).
+    intersect: 'touch',
 
-    //Move to next page
-    currPage++;
-    if ( thePDF !== null && currPage <= numPages )
-    {
-        thePDF.getPage( currPage ).then( handlePages );
+    // Specifies what should be done if already selected elements get selected again.
+    //   invert: Invert selection for elements which were already selected
+    //   keep: Make stored elements (by keepSelectio()) 'fix'
+    //   drop: Remove stored elements after they have been touched
+    overlap: 'invert',
+
+    // Configuration in case a selectable gets just clicked.
+    singleTap: {
+
+        // Enable single-click selection (Also disables range-selection via shift + ctrl).
+        allow: true,
+
+        // 'native' (element was mouse-event target) or 'touch' (element visually touched).
+        intersect: 'native'
+    },
+
+    // Scroll configuration.
+    scrolling: {
+
+        // On scrollable areas the number on px per frame is devided by this amount.
+        // Default is 10 to provide a enjoyable scroll experience.
+        speedDivider: 10,
+
+        // Browsers handle mouse-wheel events differently, this number will be used as 
+        // numerator to calculate the mount of px while scrolling manually: manualScrollSpeed / scrollSpeedDivider.
+        manualSpeed: 750
     }
-}
+});
+});
+});

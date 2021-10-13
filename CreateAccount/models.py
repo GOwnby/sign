@@ -1,5 +1,5 @@
 from django.db import models
-from django.db.models import JSONField
+from django_mysql.models import JSONField
 
 class Accounts(models.Model):
     key = models.IntegerField(primary_key=True, default=1)
@@ -22,12 +22,12 @@ class AccountLookup(models.Model):
 
 class Corporation(models.Model):
     userOwnerEmail = models.CharField(primary_key=True, max_length=128)
-    branchesAssociated = models.JSONField()
+    branchesAssociated = JSONField()
 
 class Branch(models.Model):
     userOwnerEmail = models.CharField(primary_key=True, max_length=128)
-    teamsAssociated = models.JSONField()
+    teamsAssociated = JSONField()
 
 class Team(models.Model):
     userOwnerEmail = models.CharField(primary_key=True, max_length=128)
-    usersAssociated = models.JSONField()
+    usersAssociated = JSONField()
